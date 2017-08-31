@@ -26,9 +26,12 @@ io.on('connection', (socket) => {
         console.log('User was disconnected');
     });
 
-    socket.on('createMessage', (message) => {
+    socket.on('createMessage', (message, callback) => {
         console.log('Create message', message);
         io.emit('newMessage', generateMessage(message.from, message.text));
+
+        // Send event back to client.
+        callback('This is from server');
     });
 });
 
