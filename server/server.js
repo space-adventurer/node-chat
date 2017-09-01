@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
         io.emit('newMessage', generateMessage(message.from, message.text));
 
         // Send event back to client.
-        callback('This is from server');
+        callback();
     });
 });
 
@@ -40,3 +40,4 @@ app.use(express.static(publicPath));
 server.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
+
